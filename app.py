@@ -3,6 +3,7 @@ from flask import redirect, flash, url_for
 from flask import make_response, session,escape
 import sqlite3 as sql
 from weather import get_lat_lon,get_temp
+import os
 
 app = Flask(__name__)
 app.secret_key = 'nhbahgbuBEIRGNUIueuiwiNJEnoi3i9jq8u6injgenilqheruoghaioenr'
@@ -154,4 +155,5 @@ def delete(name):
     pass
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
